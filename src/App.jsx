@@ -34,7 +34,8 @@ const [quantity,setQuantity]=useState(1)
   return (
     <div className='add-form' onSubmit={handleSubmit}>
     <h3>What you need for your trip?</h3>
-    <select value={quantity} onChange={(q)=>setQuantity(q.target.value)}> 
+    
+    <select value={quantity} onChange={(q)=>setQuantity(Number(q.target.value))}> 
       {
         // create an array from 1 to 20 , and we will loop over it ,and create a list of option elements 
      Array.from({length:20},(_,i)=>i+1).map((num)=>
