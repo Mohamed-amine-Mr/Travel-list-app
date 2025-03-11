@@ -23,9 +23,10 @@ function Logo(){
   return <h1>🌴 Farm Away 💼</h1>
 }
 function Form(){
-cosnt [description,setDescription]=useState()
+const [description,setDescription]=useState("")
 
-  function handleSubmit(){
+  function handleSubmit(e){
+    e.preventDefault()
      
   }
   return (
@@ -37,7 +38,7 @@ cosnt [description,setDescription]=useState()
      Array.from({length:20},(_,i)=>i+1).map((num)=><option value={num} key={num}>{num}</option>)
      }
     </select>
-    <input type="text" placeholder="item.." />
+    <input type="text" placeholder="item.."value={description} onChange={(e)=>setDescription(e.target.value)} />
     <button>Add</button>
 
 </div>
