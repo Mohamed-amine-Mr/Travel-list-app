@@ -2,7 +2,8 @@ import React from 'react'
 import "./index.css"
 const App = () => {
   return (
-    <><Logo/>
+    <>
+    <Logo/>
     <Form/>
     <PackingList/>
     <Stats/>
@@ -16,7 +17,7 @@ function Logo(){
 function Form(){
   return (
     <div className='add-form'>
-            <h3>What you need for your trip?</h3>
+    <h3>What you need for your trip?</h3>
 <select></select>
 <input type="text" placeholder="item.." />
 <button>Add</button>
@@ -27,16 +28,16 @@ function Form(){
   return (
     <div className="list">
       <ul>
-        <li></li>
-      </ul>
+list      
+</ul>
       </div>
   )
 }function Stats(){
   return (
-    <footer>
+    <footer className='stats'>
     <em>
-      ? "You got everything! Ready to go ✈️" : ` 💼 You have X on your list,
-      and you already packed `
+      You got everything! Ready to go ✈️  💼 You have X on your list,
+      and you already packed 
     </em>
   </footer>
   )
