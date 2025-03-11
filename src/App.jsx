@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./index.css"
 const App = () => {
   return (
     <><Logo/>
@@ -12,15 +12,16 @@ const App = () => {
 export default  App
 function Logo(){
   return <h1>🌴 Farm Away 💼</h1>
-}function Form(){
+}
+function Form(){
   return (
-    <form>
+    <div className='add-form'>
             <h3>What you need for your trip?</h3>
 <select></select>
 <input type="text" placeholder="item.." />
 <button>Add</button>
 
-</form>
+</div>
   )
 }function PackingList(){
   return (
