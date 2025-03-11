@@ -22,6 +22,12 @@ export default  App
 function Logo(){
   return <h1>🌴 Farm Away 💼</h1>
 }
+/*
+Controlled elements:
+  1. Define a piece of state.
+  2. Use that state on the element we want to control. We basically force the element to always take the value, value={quantity}.
+  3. Update the state variable with an onChange handler, onChange={(e) => setDescription(e.target.value)}.
+**/
 function Form(){
 const [description,setDescription]=useState("")
 const [quantity,setQuantity]=useState(1)
@@ -29,10 +35,17 @@ const [quantity,setQuantity]=useState(1)
 
   function handleSubmit(e){
     e.preventDefault()
+;
+    const newItem = {description,quantity,
+    
+      packed:false,id:Date.now()};
+      console.log(newItem);
   }
 
+
+
   return (
-    <div className='add-form' onSubmit={handleSubmit}>
+    <form className='add-form' onSubmit={handleSubmit}>
     <h3>What you need for your trip?</h3>
     
     <select value={quantity} onChange={(q)=>setQuantity(Number(q.target.value))}> 
@@ -45,7 +58,7 @@ const [quantity,setQuantity]=useState(1)
     <input type="text" placeholder="item.."value={description} onChange={(e)=>setDescription(e.target.value)} />
     <button>Add</button>
 
-</div>
+</form>
   )
 }
 
