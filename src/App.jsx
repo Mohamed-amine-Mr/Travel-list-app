@@ -30,15 +30,30 @@ function Form(){
 
 </div>
   )
-}function PackingList(){
+}
+
+function PackingList(){
   return (
     <div className="list">
       <ul>
-list      
-</ul>
-      </div>
+    {initialItems.map((item)=><Item item={item}/>)}  
+    </ul>
+    </div>
   )
-}function Stats(){
+}
+function Item({item}){
+  return (
+<>
+<li>{item.description}</li>
+<li>{item.quantity}</li>
+</>
+  
+
+  )
+
+}
+
+function Stats(){
   return (
     <footer className='stats'>
     <em>
