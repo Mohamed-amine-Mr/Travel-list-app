@@ -1,5 +1,6 @@
 import React from 'react'
 import "./index.css"
+import {useState} from "react";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -22,10 +23,20 @@ function Logo(){
   return <h1>🌴 Farm Away 💼</h1>
 }
 function Form(){
+cosnt [description,setDescription]=useState()
+
+  function handleSubmit(){
+     
+  }
   return (
-    <div className='add-form'>
+    <div className='add-form' onSubmit={handleSubmit}>
     <h3>What you need for your trip?</h3>
-    <select></select>
+    <select>
+      {
+        // create an array from 1 to 20 , and we will loop over it ,and create a list of option elements 
+     Array.from({length:20},(_,i)=>i+1).map((num)=><option value={num} key={num}>{num}</option>)
+     }
+    </select>
     <input type="text" placeholder="item.." />
     <button>Add</button>
 
@@ -37,7 +48,7 @@ function PackingList(){
   return (
     <div className="list">
       <ul>
-    {initialItems.map((item)=><Item item={item}/>)}  
+    {initialItems.map((item)=><Item item={item} key={item.id}/>)}  
     </ul>
     </div>
   )
