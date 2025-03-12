@@ -35,12 +35,18 @@ const [quantity,setQuantity]=useState(1)
 
   function handleSubmit(e){
     e.preventDefault()
-;
+if (!description){
+  return
+}
     const newItem = {description,quantity,
     
       packed:false,id:Date.now()};
       console.log(newItem);
-  }
+  // Reset the select and input elements to their initial state after submitting the form 
+  
+setQuantity(1)
+setDescription("")
+}
 
 
 
