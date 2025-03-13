@@ -4,15 +4,24 @@ import { useState } from "react";
 
 const App = () => {
   const [items, setItems] = useState([]);
+
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
+  }
+  // Function to delete an item by its ID
+  function handleDeleteItems(id) {
+    // Use the `filter` method to create a new array excluding the item with the matching ID
+    setItems((items) => items.filter((item) => item.id !== id));
+    // Explanation:
+    // 1. `items.filter(...)` creates a new array with all items except the one that matches the `id`.
+    // 2. `setItems` updates the state with this new array, effectively removing the item from the list.
   }
 
   return (
     <>
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} />
+      <PackingList items={items} onDeleteItems={handleDeleteItems} />
       <Stats />
     </>
   );
@@ -58,7 +67,6 @@ function Form({ onAddItems }) {
     };
     // console.log(newItem);
     onAddItems(newItem);
-
     setQuantity(1);
     setDescription("");
   }
@@ -91,26 +99,32 @@ function Form({ onAddItems }) {
   );
 }
 // we reseave the props from the app , the got lift up from Form to App (common coponent)
-function PackingList({ items }) {
+function PackingList({ items, onDeleteItems }) {
   return (
     <div className="list">
       <ul>
         {/*now we use items state in our jsx*/}
         {items.map((item) => (
-          <Item item={item} key={item.id} />
+          <Item item={item} onDeleteItems={onDeleteItems} key={item.id} />
         ))}
       </ul>
     </div>
   );
 }
-function Item({ item }) {
+function Item({ item, onDeleteItems }) {
   return (
     <>
       <li>
         <span style={item.packed ? { textDecoration: "line-through" } : {}}>
           {item.quantity} {item.description}
         </span>
-        <button>❌</button>
+        <button onClick={() => onDeleteItems(item.id)}>❌</button>
+        {/* Explanation:
+          1. When the button is clicked, the `onClick` handler is triggered.
+          2. The handler calls `onDeleteItems` with the `item.id` as an argument.
+          3. `onDeleteItems` is a function passed down from the `App` component via props.
+          4. It removes the item with the matching `id` from the list by updating the state.
+      */}
       </li>
     </>
   );
